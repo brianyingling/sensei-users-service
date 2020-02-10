@@ -1,14 +1,4 @@
 module.exports = {
-  plugins: [
-    [
-      'module-resolver',
-      {
-        alias: {
-          '#root': './build',
-        },
-      },
-    ],
-  ],
   presets: [
     [
       '@babel/preset-env',
