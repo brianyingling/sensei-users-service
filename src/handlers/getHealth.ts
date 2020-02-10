@@ -5,7 +5,7 @@ import {
 } from 'express';
 
 const getHealth = (_: Request, res: Response, __: NextFunction) => {
-    return res.status(200).send('OK');
+    return res.json({status: 200, message: 'OK'});
 }
 
 export default getHealth;
