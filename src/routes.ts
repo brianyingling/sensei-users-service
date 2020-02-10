@@ -2,6 +2,7 @@ import { Application } from 'express';
 import {
   createSession,
   createUser,
+  getHealth,
   getSession,
   getUser,
   getUsers,
@@ -14,6 +15,8 @@ const routes = (app: Application) => {
 
   app.get('/sessions/:id', getSession);
   app.post('/sessions', createSession);
+
+  app.get('/health', getHealth);
 };
 
 export default routes;
