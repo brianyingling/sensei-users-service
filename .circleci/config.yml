@@ -32,21 +32,20 @@ jobs:
       IMAGE_NAME: brianyingling/users-service
     working_directory: ~/repo
     steps:
-      steps:
-        - checkout
-        - setup_remote_docker
-        - restore_cache:
-            keys:
-              - v1-dependencies-{{ checksum "package.json" }}
-              - v1-dependencies-
-        - run: 
-            name: Installing Node Modules
-            command: |
-              npm install
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - run: 
-          name: Running tests
+          name: Installing Node Modules
           command: |
-            npm run test
+            npm install
+    - run: 
+        name: Running tests
+        command: |
+          npm run test
   deploy:
     docker:
       - image: circleci/node:12
