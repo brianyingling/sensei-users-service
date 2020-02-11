@@ -1,49 +1,49 @@
-# JavaScript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
-jobs:
-  build:
+executors:
+  docker-executor:
     docker:
-      # specify the version you desire here
-      # - image: circleci/buildpack-deps:stretch
-      - image: circleci/node:12.0-stretch
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
+      - image: circleci/node:12-stretch
+    working_directory: /tmp
     environment:
       IMAGE_NAME: brianyingling/users-service
-    
-    working_directory: ~/repo
-
+jobs:
+  build:
+    executor: docker-executor
     steps:
       - checkout
       - setup_remote_docker
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
       - run: 
           name: Installing Node Modules
           command: |
             npm install
-      
-      - run: 
-          name: Running tests
-          command: |
-            npm run test
-
       - run:
           name: Build Docker image
           command: |
             docker build -t $IMAGE_NAME:latest .
+      - run:
+          name: Create workspace
+          command: |
+            mkdir -p workspace
+      - run:
+          name: Archive Docker image
+          command: |
+            docker save -o image.tar $IMAGE_NAME
+      - persist_to_workspace:
+          root: workspace
+          paths:
+            - ./image.tar
+  test:
+    executor: docker-executor
+    steps:
+      - setup_remote_docker
+      - run: 
+          name: Running tests
+          command: |
+            npm run test
+  deploy:
+    executor: docker-executor
+    steps:
+      - setup_remote_docker
       - run:
           name: Push Docker image
           command: |
@@ -66,10 +66,19 @@ jobs:
 
 workflows:
   version: 2
-  build-master:
+  build-test-and-deploy:
     jobs:
       - build:
           context: sensei-kubernetes
+      - test:
+          requires: 
+            - build
+      - deploy:
+          context: sensei-kubernetes
+          requires:
+            - test
           filters:
             branches:
               only: master
+    
+            
