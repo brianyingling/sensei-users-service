@@ -76,6 +76,7 @@ jobs:
       - run:
           name: Deploy Code
           command: |
+            TAG=0.1.$CIRCLE_BUILD_NUM
             docker run \
             -e TAG=$TAG \
             -e KUBERNETES_CLUSTER_CERTIFICATE=$KUBERNETES_CLUSTER_CERTIFICATE \
