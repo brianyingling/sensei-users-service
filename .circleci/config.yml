@@ -69,5 +69,6 @@ workflows:
           requires: 
             - build
       - deploy:
+          context: sensei-kubernetes
           requires:
             - test
