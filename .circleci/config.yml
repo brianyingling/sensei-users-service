@@ -47,8 +47,6 @@ jobs:
           command: |
             npm run test
   deploy:
-    machine:
-      enabled: true
     environment:
       IMAGE_NAME: brianyingling/users-service
     working_directory: ~/repo
