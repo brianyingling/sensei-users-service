@@ -89,4 +89,7 @@ workflows:
           filters:
             branches:
               only: master
+          docker:
+            - image: circleci/node:12
+              
             
