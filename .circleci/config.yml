@@ -34,9 +34,9 @@ jobs:
             - image.tar
   test:
     executor: docker-executor
-    attach_workspace:
-      at: ~/repo/workspace
     steps:
+      - attach_workspace:
+          at: ~/repo/workspace
       - setup_remote_docker
       - run: 
           name: Running tests
@@ -44,9 +44,9 @@ jobs:
             npm run test
   deploy:
     executor: docker-executor
-    attach_workspace:
-      at: ~/repo/workspace
     steps:
+      - attach_workspace:
+          at: ~/repo/workspace
       - setup_remote_docker
       - run:
           name: Push Docker image
