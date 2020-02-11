@@ -8,10 +8,10 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s htt
 
 chmod u+x ./kubectl
 
-COMMIT_SHA1=$CIRCLE_SHA1
+# COMMIT_SHA1=$CIRCLE_SHA1
 
 # We must export it so it's available for envsubst
-export COMMIT_SHA1=$COMMIT_SHA1
+# export COMMIT_SHA1=$COMMIT_SHA1
 export TAG=$TAG
 
 echo "Running envsubst"
