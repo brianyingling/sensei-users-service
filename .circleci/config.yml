@@ -75,7 +75,7 @@ jobs:
             chmod u+x ./kubectl
       - run:
           name: Deploy Code
-          command: ./scripts/ci-deploy.sh
+          command: docker run $IMAGE_NAME scripts/ci-deploy.sh
 
 workflows:
   version: 2
