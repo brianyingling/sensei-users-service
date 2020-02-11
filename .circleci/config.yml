@@ -53,16 +53,6 @@ jobs:
       IMAGE_NAME: brianyingling/users-service
     working_directory: ~/repo
     steps:
-      - checkout
-      - setup_remote_docker
-      - restore_cache:
-        keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
-      - run: 
-          name: Installing Node Modules
-          command: |
-            npm install
       - run:
           name: Push Docker image
           command: |
