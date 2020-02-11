@@ -77,7 +77,7 @@ jobs:
           name: Deploy Code
           command: |
             docker run \
-            -e TAG=$TAG
+            -e TAG=$TAG \
             -e KUBERNETES_CLUSTER_CERTIFICATE=$KUBERNETES_CLUSTER_CERTIFICATE \
             -e KUBERNETES_SERVER=$KUBERNETES_SERVER \
             -e KUBERNETES_TOKEN=$KUBERNETES_TOKEN \
