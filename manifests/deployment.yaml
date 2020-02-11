@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
                 - name: users-service
-                  image: brianyingling/users-service:latest
+                  image: brianyingling/users-service:$TAG_VERSION
                   ports:
                     - containerPort: 9002
                       name: http
