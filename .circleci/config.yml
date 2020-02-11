@@ -38,10 +38,14 @@ jobs:
       - attach_workspace:
           at: ~/repo/workspace
       - setup_remote_docker
+      - run:
+          name: Load archived Docker image
+          command: |
+            docker load -i ~/repo/workspace/image.tar
       - run: 
           name: Running tests
           command: |
-            docker run -it $IMAGE_NAME /bin/bash && npm run test
+            docker run $IMAGE_NAME /bin/bash && npm run test
   deploy:
     executor: docker-executor
     steps:
