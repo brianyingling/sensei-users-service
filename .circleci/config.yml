@@ -26,8 +26,8 @@ jobs:
           command: |
             docker build -t $IMAGE_NAME:latest .
   test:
-    docker:
-      - image: circleci/node:12
+    machine:
+      enabled: true
     environment:
       IMAGE_NAME: brianyingling/users-service
     working_directory: ~/repo
@@ -47,8 +47,8 @@ jobs:
           command: |
             npm run test
   deploy:
-    docker:
-      - image: circleci/node:12
+    machine:
+      enabled: true
     environment:
       IMAGE_NAME: brianyingling/users-service
     working_directory: ~/repo
