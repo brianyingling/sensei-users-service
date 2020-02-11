@@ -45,7 +45,7 @@ jobs:
       - run: 
           name: Running tests
           command: |
-            docker run $IMAGE_NAME /bin/bash && npm run test
+            docker run $IMAGE_NAME npm run test
   deploy:
     executor: docker-executor
     steps:
