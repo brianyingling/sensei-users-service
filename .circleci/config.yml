@@ -75,7 +75,12 @@ jobs:
       #       chmod u+x ./kubectl
       - run:
           name: Deploy Code
-          command: docker run $IMAGE_NAME npm run deploy
+          command: |
+            docker run $IMAGE_NAME \
+            -e KUBERNETES_CLUSTER_CERTIFICATE=$KUBERNETES_CLUSTER_CERTIFICATE \
+            -e KUBERNETES_SERVER=$KUBERNETES_SERVER \
+            -e KUBERNETES_TOKEN=$KUBERNETES_TOKEN \
+            npm run deploy
 
 workflows:
   version: 2
