@@ -42,10 +42,10 @@ jobs:
           name: Installing Node Modules
           command: |
             npm install
-    - run: 
-        name: Running tests
-        command: |
-          npm run test
+      - run: 
+          name: Running tests
+          command: |
+            npm run test
   deploy:
     docker:
       - image: circleci/node:12
