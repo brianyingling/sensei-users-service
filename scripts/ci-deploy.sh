@@ -2,7 +2,7 @@
 # exit script when any command ran here returns with non-zero exit code
 set -e
 
-sudo apt-get update && sudo apt-get -y install gettext-base
+apt-get update && apt-get -y install gettext-base
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
 
