@@ -4,6 +4,7 @@
   "description": "Users Service for Sensei",
   "main": "index.js",
   "scripts": {
+    "deploy":"./scripts/ci-deploy.sh",
     "dev": "nodemon src/app.ts",
     "start": "tsc && node build/server",
     "test": "jest",

@@ -64,18 +64,18 @@ jobs:
             docker tag $IMAGE_NAME:latest $IMAGE_NAME:$TAG
             docker push $IMAGE_NAME:latest
             docker push $IMAGE_NAME:$TAG
-      - run:
-          name: Install envsubst
-          command: |
-            sudo apt-get update && sudo apt-get -y install gettext-base
-      - run:
-          name: Install kubectl
-          command: |
-            curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
-            chmod u+x ./kubectl
+      # - run:
+      #     name: Install envsubst
+      #     command: |
+      #       sudo apt-get update && sudo apt-get -y install gettext-base
+      # - run:
+      #     name: Install kubectl
+      #     command: |
+      #       curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+      #       chmod u+x ./kubectl
       - run:
           name: Deploy Code
-          command: docker run $IMAGE_NAME scripts/ci-deploy.sh
+          command: docker run $IMAGE_NAME npm run deploy
 
 workflows:
   version: 2
