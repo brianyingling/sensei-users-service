@@ -79,9 +79,6 @@ workflows:
     jobs:
       - build:
           context: sensei-kubernetes
-          filters:
-            branches:
-              only: master
       - test:
           requires: 
             - build
@@ -89,3 +86,7 @@ workflows:
           context: sensei-kubernetes
           requires:
             - test
+          filters:
+            branches:
+              only: master
+            
