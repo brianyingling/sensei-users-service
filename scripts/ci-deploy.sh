@@ -36,6 +36,7 @@ echo $KUBERNETES_TOKEN
 
 echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
 
+
 # echo "Creating AWS credentials file"
 # mkdir ~/.aws 
 # cat > credentials <<EOF
