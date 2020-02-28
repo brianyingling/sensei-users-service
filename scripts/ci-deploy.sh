@@ -32,12 +32,20 @@ echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
 
 echo "Creating AWS credentials file"
 mkdir ~/.aws 
-cat > ~/.aws/credentials <<EOF
+cat > credentials <<EOF
 [default]
 aws_access_key_id=$AWS_ACCESS_KEY_ID
 aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
 EOF
 
+echo "Creating AWS secrets"
+./kubectl create secret generic \
+aws_access_key_id --from-literal=aws_access_key_id=$AWS_ACCESS_KEY_ID
+
+./kubectl create secret generic \
+aws_secret_access_key --from-literal=aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
+
+echo "Deploying to Kubernetes"
 ./kubectl \
   --kubeconfig=/dev/null \
   --server=$KUBERNETES_SERVER \
