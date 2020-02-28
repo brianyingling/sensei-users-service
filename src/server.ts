@@ -40,4 +40,5 @@ app.listen(PORT, '0.0.0.0', () => {
 
   console.log('AWS ACCESS KEY ID:', process.env.AWS_ACCESS_KEY_ID);
   console.log('AWS SECRET ACCESS KEY:', process.env.AWS_SECRET_ACCESS_KEY);
+  console.log('line here?');
 });
