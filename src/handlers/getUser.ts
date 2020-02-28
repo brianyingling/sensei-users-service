@@ -24,7 +24,7 @@ export const queryForUser = (id: string) => (
 
 const getUser = (req: Request, res: Response) => {
   console.log('get user handle');
-  console.log('auth headers:', req.headers.authorization);
+  console.log('headers:', req.headers);
   return queryForUser(req.params.id)
     .then(sendResponse(res))
     .catch(handleError)
