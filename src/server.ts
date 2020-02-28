@@ -16,9 +16,9 @@ const app: Application = express();
 
 app.use(bodyParser.json());
 
-app.use(cors({
-  origin: (origin, cb) => cb(null, true),
-  credentials: true,
+// app.use(cors({
+//   origin: (origin, cb) => cb(null, true),
+//   credentials: true,
 }));
 
 routes(app);
