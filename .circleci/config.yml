@@ -78,7 +78,7 @@ jobs:
           command: |
             TAG=0.1.$CIRCLE_BUILD_NUM
             docker run \
-            -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+            -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
             -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
             -e KUBERNETES_CLUSTER_CERTIFICATE=$KUBERNETES_CLUSTER_CERTIFICATE \
             -e KUBERNETES_SERVER=$KUBERNETES_SERVER \
