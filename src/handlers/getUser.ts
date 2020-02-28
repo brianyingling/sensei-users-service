@@ -22,10 +22,11 @@ export const queryForUser = (id: string) => (
     .then(format)
 );
 
-const getUser = (req: Request, res: Response) => (
-  queryForUser(req.params.id)
+const getUser = (req: Request, res: Response) => {
+  console.log('get user handle');
+  return queryForUser(req.params.id)
     .then(sendResponse(res))
     .catch(handleError)
-);
+};
 
 export default getUser;

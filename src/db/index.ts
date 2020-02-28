@@ -12,8 +12,13 @@ const put = (params) => new Promise((resolve, reject) => {
 });
 
 const query = (params) => new Promise((resolve, reject) => {
+  console.log('making the query...');
   docClient.query(params, (err, data) => {
-    if (err) reject(err);
+    console.log('data:', data);
+    if (err) {
+      console.log('error:', err);
+      reject(err);
+    }
     else resolve(data);
   });
 });
