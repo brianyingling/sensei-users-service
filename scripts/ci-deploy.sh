@@ -36,6 +36,9 @@ echo $KUBERNETES_TOKEN
 
 echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
 
+echo "printing aws credentials"
+echo "AWS_ACCESS_KEY_ID" $AWS_ACCESS_KEY_ID
+echo "AWS_SECRET_ACCESS_KEY" $AWS_SECRET_ACCESS_KEY
 
 # echo "Creating AWS credentials file"
 # mkdir ~/.aws 
