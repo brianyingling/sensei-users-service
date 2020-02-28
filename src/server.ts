@@ -37,7 +37,6 @@ app.use((err: Error, _: Request, res: Response, __: NextFunction) => {
 app.listen(PORT, '0.0.0.0', () => {
   // eslint-disable-next-line no-console
   console.log(`Users Service listening on port ${PORT}`);
-
   console.log('AWS ACCESS KEY ID:', process.env.AWS_ACCESS_KEY_ID);
   console.log('AWS SECRET ACCESS KEY:', process.env.AWS_SECRET_ACCESS_KEY);
   console.log('line here?');
