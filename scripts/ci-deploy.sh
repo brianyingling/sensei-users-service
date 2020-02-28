@@ -26,23 +26,7 @@ mv ./manifests/deployment.yaml.out ./manifests/deployment.yaml
 envsubst <./manifests/aws-secrets.yaml >./manifests/aws-secrets.yaml.out
 mv ./manifests/aws-secrets.yaml.out ./manifests/aws-secrets.yaml
 
-cat ./manifests/aws-secrets.yaml
-
-
-echo "Printing values"
-echo $KUBERNETES_CLUSTER_CERTIFICATE
-echo $KUBERNETES_SERVER
-echo $KUBERNETES_TOKEN
-
 echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
-
-echo "Creating AWS credentials file"
-mkdir ~/.aws 
-cat > credentials <<EOF
-[default]
-aws_access_key_id=$AWS_ACCESS_KEY_ID
-aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
-EOF
 
 echo "Deploying to Kubernetes"
 ./kubectl \
