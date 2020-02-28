@@ -30,6 +30,14 @@ echo $KUBERNETES_TOKEN
 
 echo "$KUBERNETES_CLUSTER_CERTIFICATE" | base64 --decode > cert.crt
 
+echo "Creating AWS credentials file"
+mkdir ~/.aws 
+cat > ~/.aws/credentials <<EOF
+[default]
+aws_access_key_id=$AWS_ACCESS_KEY_ID
+aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
+EOF
+
 ./kubectl \
   --kubeconfig=/dev/null \
   --server=$KUBERNETES_SERVER \
