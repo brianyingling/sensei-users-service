@@ -40,11 +40,22 @@ EOF
 
 echo "Creating AWS secrets"
 ./kubectl create secret generic \
-aws_access_key_id --from-literal=aws_access_key_id=$AWS_ACCESS_KEY_ID
+aws_access_key_id \
+--from-literal=aws_access_key_id=$AWS_ACCESS_KEY_ID
+--kubeconfig=/dev/null \
+--server=$KUBERNETES_SERVER \
+--certificate-authority=cert.crt \
+--token=$KUBERNETES_TOKEN \
+  
 
 ./kubectl create secret generic \
-aws_secret_access_key --from-literal=aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
-
+aws_secret_access_key \
+--from-literal=aws_secret_access_key=$AWS_SECRET_ACCESS_KEY
+--kubeconfig=/dev/null \
+--server=$KUBERNETES_SERVER \
+--certificate-authority=cert.crt \
+--token=$KUBERNETES_TOKEN \
+  
 echo "Deploying to Kubernetes"
 ./kubectl \
   --kubeconfig=/dev/null \
