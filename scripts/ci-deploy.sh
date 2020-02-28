@@ -26,6 +26,8 @@ mv ./manifests/deployment.yaml.out ./manifests/deployment.yaml
 envsubst <./manifests/aws-secrets.yaml >./manifests/aws-secrets.yaml.out
 mv ./manifests/aws-secrets.yaml.out ./manifests/aws-secrets.yaml
 
+cat ./manifests/aws-secrets.yaml
+
 
 echo "Printing values"
 echo $KUBERNETES_CLUSTER_CERTIFICATE
