@@ -12,12 +12,7 @@ const put = (params) => new Promise((resolve, reject) => {
 });
 
 const query = (params) => new Promise((resolve, reject) => {
-  console.log('making query...');
-  console.log('AWS ACCESS KEY ID in query:', process.env.AWS_ACCESS_KEY_ID);
-  console.log('AWS SECRET ACCESS KEY in query:', process.env.AWS_SECRET_ACCESS_KEY);
-  console.log('AWS.config:', AWS.config);
   docClient.query(params, (err, data) => {
-    console.log('data:', data);
     if (err) {
       console.log('error:', err);
       reject(err);
