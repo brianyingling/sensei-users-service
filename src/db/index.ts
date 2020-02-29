@@ -20,6 +20,8 @@ const query = (params) => new Promise((resolve, reject) => {
     console.log('data:', data);
     if (err) {
       console.log('error:', err);
+      console.log('request:', this.request.httpRequest);
+      console.log('response:', this.httpResponse);
       reject(err);
     }
     else resolve(data);
