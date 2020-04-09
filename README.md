@@ -1,3 +1,1 @@
 # sensei-users-service
-
-test
